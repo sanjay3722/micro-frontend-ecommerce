@@ -1,0 +1,44 @@
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Caches
+.cache/
+.eslintcache
+**/.parcel-cache/
+**/.turbo/
+**/.next/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/OS
+.DS_Store
+.vscode/
+.idea/
+
+# Temp
+tmp/
+temp/
+
+# Lockfiles (managed per dev, not in VCS)
+pnpm-lock.yaml
+yarn.lock
+
+# Misc
+*.local
+*.pid
+*.seed
+*.swp

@@ -1,0 +1,142 @@
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.navbar-brand {
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-item:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.navbar-item-active {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.navbar-icon {
+  font-size: 18px;
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.navbar-toggle-line {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar-toggle-open .navbar-toggle-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle-open .navbar-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle-open .navbar-toggle-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-item {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navbar-item:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+}
