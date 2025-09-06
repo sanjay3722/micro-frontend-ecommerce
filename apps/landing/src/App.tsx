@@ -2,101 +2,36 @@ import "./index.css";
 import BannerSection from "./components/BannerSection";
 import Header from "./components/Header";
 import ProductList from "./components/ProductList";
-import { Product } from "./types/ProductsType";
-
-// Mock data for development
-const mockProducts: Product[] = [
-  {
-    id: 1,
-    name: "Wireless Bluetooth Headphones",
-    description:
-      "High-quality wireless headphones with noise cancellation and 30-hour battery life.",
-    price: 99.99,
-    image: "https://via.placeholder.com/400x300?text=Headphones",
-    category: "Electronics",
-    rating: 4.5,
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: "Smart Fitness Watch",
-    description:
-      "Track your fitness goals with this advanced smartwatch featuring heart rate monitoring.",
-    price: 199.99,
-    image: "https://via.placeholder.com/400x300?text=Smartwatch",
-    category: "Electronics",
-    rating: 4.3,
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: "Organic Cotton T-Shirt",
-    description: "Comfortable and eco-friendly cotton t-shirt available in multiple colors.",
-    price: 29.99,
-    image: "https://via.placeholder.com/400x300?text=T-Shirt",
-    category: "Clothing",
-    rating: 4.7,
-    inStock: true,
-  },
-  {
-    id: 4,
-    name: "Stainless Steel Water Bottle",
-    description: "Keep your drinks cold for 24 hours with this insulated water bottle.",
-    price: 24.99,
-    image: "https://via.placeholder.com/400x300?text=Water+Bottle",
-    category: "Home",
-    rating: 4.6,
-    inStock: false,
-  },
-  {
-    id: 5,
-    name: "Wireless Charging Pad",
-    description: "Fast wireless charging pad compatible with all Qi-enabled devices.",
-    price: 49.99,
-    image: "https://via.placeholder.com/400x300?text=Charging+Pad",
-    category: "Electronics",
-    rating: 4.2,
-    inStock: true,
-  },
-  {
-    id: 6,
-    name: "Yoga Mat",
-    description: "Premium non-slip yoga mat perfect for home workouts and studio sessions.",
-    price: 39.99,
-    image: "https://via.placeholder.com/400x300?text=Yoga+Mat",
-    category: "Fitness",
-    rating: 4.8,
-    inStock: true,
-  },
-  {
-    id: 7,
-    name: "Portable Bluetooth Speaker",
-    description: "Waterproof portable speaker with 360-degree sound and 20-hour battery life.",
-    price: 79.99,
-    image: "https://via.placeholder.com/400x300?text=Speaker",
-    category: "Electronics",
-    rating: 4.4,
-    inStock: true,
-  },
-  {
-    id: 8,
-    name: "Leather Wallet",
-    description: "Genuine leather wallet with RFID protection and multiple card slots.",
-    price: 34.99,
-    image: "https://via.placeholder.com/400x300?text=Wallet",
-    category: "Accessories",
-    rating: 4.1,
-    inStock: true,
-  },
-];
+import ProductDetail from "./components/ProductDetail";
+import { Route, Routes } from "react-router-dom";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import Terms from "./components/pages/Terms";
+import AffiliateDisclosure from "./components/pages/AffiliateDisclosure";
+import Footer from "./components/Footer";
 
 // Main Landing App Component
 const LandingApp = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F5F5F5]">
       <Header />
-      <BannerSection />
-      <ProductList />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <BannerSection />
+              <ProductList />
+            </>
+          }
+        />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/affiliate-disclosure" element={<AffiliateDisclosure />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };

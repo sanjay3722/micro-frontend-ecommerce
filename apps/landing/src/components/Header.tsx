@@ -7,7 +7,7 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                <div className="w-8 h-8 bg-gradient-to-r from-[#FB8C00] to-[#E53935] rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white font-bold text-lg">S</span>
                 </div>
                 <span className="text-xl font-bold text-gray-900">StoreFront</span>
@@ -18,34 +18,58 @@ const Header = () => {
           {/* Navigation */}
           <nav className="hidden md:flex space-x-8">
             <a
-              href="#home"
-              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              href="/"
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
             >
               Home
             </a>
             <a
-              href="#products"
-              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-            >
-              Products
-            </a>
-            <a
-              href="#about"
-              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              href="/about"
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
             >
               About
             </a>
             <a
-              href="#contact"
-              className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+              href="/contact"
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
             >
               Contact
+            </a>
+            <a
+              href="/terms"
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Terms
+            </a>
+            <a
+              href="/affiliate-disclosure"
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Affiliate
+            </a>
+            <a
+              href={require("../constants/mfe.constants").MFE_URLS.PLANS}
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Plans MFE
+            </a>
+            <a
+              href={require("../constants/mfe.constants").MFE_URLS.CHECKOUT}
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Checkout MFE
+            </a>
+            <a
+              href={require("../constants/mfe.constants").MFE_URLS.AUTH}
+              className="text-gray-700 hover:text-[#1976D2] px-3 py-2 text-sm font-medium transition-colors"
+            >
+              Auth MFE
             </a>
           </nav>
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-blue-600 p-2 rounded-full hover:bg-gray-100 transition-colors">
+            <button className="text-gray-700 hover:text-[#1976D2] p-2 rounded-full hover:bg-gray-100 transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -55,7 +79,7 @@ const Header = () => {
                 />
               </svg>
             </button>
-            <button className="text-gray-700 hover:text-blue-600 p-2 rounded-full hover:bg-gray-100 transition-colors relative">
+            <button className="text-gray-700 hover:text-[#1976D2] p-2 rounded-full hover:bg-gray-100 transition-colors relative">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -64,11 +88,11 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
                 />
               </svg>
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-[#E53935] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 3
               </span>
             </button>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+            <button className="bg-[#1976D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565c0] transition-colors text-sm font-medium">
               Sign In
             </button>
           </div>

@@ -1,82 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
-import { Product, CartItem } from "../types/ProductsType";
-import productsData from "../mock/products.json";
+import { useProducts } from "../hooks/useProducts";
+import { MESSAGES } from "../constants/message.constants";
+
 const ProductList = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error] = useState("");
-  const [cartLoading, setCartLoading] = useState(false);
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const mockProducts: Product[] = productsData as Product[];
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      // Mock API call - in real app, this would be a real API
-      const response = await fetch("/api/products");
-
-      if (response.ok) {
-        const data = await response.json();
-        setProducts(data);
-      } else {
-        // Fallback to mock data if API fails
-        setProducts(mockProducts);
-      }
-    } catch (err) {
-      // Fallback to mock data
-      setProducts(mockProducts);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const addToCart = async (product: Product) => {
-    try {
-      setCartLoading(true);
-
-      // Get current cart from localStorage
-      const currentCart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
-
-      // Check if product already in cart
-      const existingItem = currentCart.find((item) => item.product.id === product.id);
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        currentCart.push({ product, quantity: 1 });
-      }
-
-      // Save updated cart
-      localStorage.setItem("cart", JSON.stringify(currentCart));
-
-      // Mock API call to update cart
-      await fetch("/api/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(currentCart),
-      });
-
-      // Show success message
-      alert(`${product.name} added to cart!`);
-    } catch (err) {
-      console.error("Error adding to cart:", err);
-      alert("Failed to add item to cart. Please try again.");
-    } finally {
-      setCartLoading(false);
-    }
-  };
+  const { products, loading, error, cartLoading, fetchProducts, addToCart } = useProducts();
 
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-96 gap-5">
-        <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-        <p className="text-lg text-gray-600">Loading amazing products...</p>
+        <div className="w-12 h-12 border-4 border-gray-300 border-t-[#1976D2] rounded-full animate-spin"></div>
+        <p className="text-lg text-gray-600">{MESSAGES.LOADING_PRODUCTS}</p>
       </div>
     );
   }
@@ -99,12 +33,14 @@ const ProductList = () => {
             />
           </svg>
         </div>
-        <p className="text-red-600 text-lg">Error loading products: {error}</p>
+        <p className="text-red-600 text-lg">
+          {MESSAGES.ERROR_LOADING_PRODUCTS_PREFIX} {error}
+        </p>
         <button
           onClick={fetchProducts}
           className="px-6 py-3 bg-blue-500 text-white border-none rounded-lg cursor-pointer hover:bg-blue-600 transition-colors"
         >
-          Try Again
+          {MESSAGES.TRY_AGAIN}
         </button>
       </div>
     );
@@ -113,9 +49,11 @@ const ProductList = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Featured Products</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          {MESSAGES.FEATURED_PRODUCTS_TITLE}
+        </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Discover our handpicked collection of premium products designed to enhance your lifestyle
+          {MESSAGES.FEATURED_PRODUCTS_SUBTITLE}
         </p>
       </div>
 
@@ -132,7 +70,7 @@ const ProductList = () => {
 
       <div className="text-center mt-16">
         <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-          View All Products
+          {MESSAGES.VIEW_ALL_PRODUCTS}
         </button>
       </div>
     </div>

@@ -12,8 +12,7 @@
   {
     "id": 2,
     "name": "Smart Fitness Watch",
-    "description":
-      "Track your fitness goals with this advanced smartwatch featuring heart rate monitoring.",
+    "description": "Track your fitness goals with this advanced smartwatch featuring heart rate monitoring.",
     "price": 199.99,
     "image": "https://via.placeholder.com/400x300?text=Smartwatch",
     "category": "Electronics",

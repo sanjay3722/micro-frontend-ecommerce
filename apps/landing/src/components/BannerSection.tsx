@@ -2,30 +2,30 @@ import React from "react";
 // Banner Section Component
 const BannerSection = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white">
+    <section className="bg-gradient-to-r from-[#FB8C00] via-[#E53935] to-[#1976D2] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Discover Amazing
-              <span className="block text-yellow-300">Products</span>
+              <span className="block text-[#FBC02D]">Products</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
               Shop the latest trends with premium quality products at unbeatable prices. Free
               shipping on orders over $50!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+              <button className="bg-[#E53935] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#d32f2f] transition-colors shadow-lg">
                 Shop Now
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#1976D2] transition-colors">
                 Learn More
               </button>
             </div>
             <div className="mt-8 flex items-center space-x-6 text-sm">
               <div className="flex items-center">
                 <svg
-                  className="w-5 h-5 text-yellow-300 mr-2"
+                  className="w-5 h-5 text-[#FBC02D] mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -39,7 +39,7 @@ const BannerSection = () => {
               </div>
               <div className="flex items-center">
                 <svg
-                  className="w-5 h-5 text-yellow-300 mr-2"
+                  className="w-5 h-5 text-[#FBC02D] mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -53,7 +53,7 @@ const BannerSection = () => {
               </div>
               <div className="flex items-center">
                 <svg
-                  className="w-5 h-5 text-yellow-300 mr-2"
+                  className="w-5 h-5 text-[#FBC02D] mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -69,11 +69,11 @@ const BannerSection = () => {
           </div>
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl transform rotate-6"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#FB8C00] to-[#E53935] rounded-2xl transform rotate-6"></div>
               <div className="relative bg-white rounded-2xl p-8 shadow-2xl">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-100 rounded-lg p-4 text-center">
-                    <div className="w-12 h-12 bg-blue-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#1976D2] rounded-full mx-auto mb-2 flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-white"
                         fill="none"
@@ -91,7 +91,7 @@ const BannerSection = () => {
                     <p className="text-sm font-medium text-gray-700">Best Prices</p>
                   </div>
                   <div className="bg-gray-100 rounded-lg p-4 text-center">
-                    <div className="w-12 h-12 bg-green-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#FBC02D] rounded-full mx-auto mb-2 flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-white"
                         fill="none"
@@ -109,7 +109,7 @@ const BannerSection = () => {
                     <p className="text-sm font-medium text-gray-700">Quality Guaranteed</p>
                   </div>
                   <div className="bg-gray-100 rounded-lg p-4 text-center">
-                    <div className="w-12 h-12 bg-purple-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#FB8C00] rounded-full mx-auto mb-2 flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-white"
                         fill="none"
@@ -127,7 +127,7 @@ const BannerSection = () => {
                     <p className="text-sm font-medium text-gray-700">Fast Delivery</p>
                   </div>
                   <div className="bg-gray-100 rounded-lg p-4 text-center">
-                    <div className="w-12 h-12 bg-red-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#E53935] rounded-full mx-auto mb-2 flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-white"
                         fill="none"

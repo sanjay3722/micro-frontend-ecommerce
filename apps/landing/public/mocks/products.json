@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "price": 99.99,
+    "description": "High-quality wireless headphones with noise cancellation and 30-hour battery life.",
+    "category": "electronics",
+    "image": "https://via.placeholder.com/400x300?text=Headphones",
+    "rating": { "rate": 4.5, "count": 213 }
+  },
+  {
+    "id": 2,
+    "title": "Smart Fitness Watch",
+    "price": 199.99,
+    "description": "Track your fitness goals with this advanced smartwatch featuring heart rate monitoring.",
+    "category": "electronics",
+    "image": "https://via.placeholder.com/400x300?text=Smartwatch",
+    "rating": { "rate": 4.3, "count": 152 }
+  },
+  {
+    "id": 3,
+    "title": "Organic Cotton T-Shirt",
+    "price": 29.99,
+    "description": "Comfortable and eco-friendly cotton t-shirt available in multiple colors.",
+    "category": "men's clothing",
+    "image": "https://via.placeholder.com/400x300?text=T-Shirt",
+    "rating": { "rate": 4.7, "count": 78 }
+  },
+  {
+    "id": 4,
+    "title": "Stainless Steel Water Bottle",
+    "price": 24.99,
+    "description": "Keep your drinks cold for 24 hours with this insulated water bottle.",
+    "category": "home",
+    "image": "https://via.placeholder.com/400x300?text=Water+Bottle",
+    "rating": { "rate": 4.6, "count": 0 }
+  },
+  {
+    "id": 5,
+    "title": "Wireless Charging Pad",
+    "price": 49.99,
+    "description": "Fast wireless charging pad compatible with all Qi-enabled devices.",
+    "category": "electronics",
+    "image": "https://via.placeholder.com/400x300?text=Charging+Pad",
+    "rating": { "rate": 4.2, "count": 95 }
+  },
+  {
+    "id": 6,
+    "title": "Yoga Mat",
+    "price": 39.99,
+    "description": "Premium non-slip yoga mat perfect for home workouts and studio sessions.",
+    "category": "fitness",
+    "image": "https://via.placeholder.com/400x300?text=Yoga+Mat",
+    "rating": { "rate": 4.8, "count": 300 }
+  },
+  {
+    "id": 7,
+    "title": "Portable Bluetooth Speaker",
+    "price": 79.99,
+    "description": "Waterproof portable speaker with 360-degree sound and 20-hour battery life.",
+    "category": "electronics",
+    "image": "https://via.placeholder.com/400x300?text=Speaker",
+    "rating": { "rate": 4.4, "count": 120 }
+  },
+  {
+    "id": 8,
+    "title": "Leather Wallet",
+    "price": 34.99,
+    "description": "Genuine leather wallet with RFID protection and multiple card slots.",
+    "category": "men's clothing",
+    "image": "https://via.placeholder.com/400x300?text=Wallet",
+    "rating": { "rate": 4.1, "count": 88 }
+  }
+]

@@ -1,5 +1,16 @@
 import React from "react";
 import { Product } from "../types/ProductsType";
+import { MESSAGES } from "../constants/message.constants";
+import { Link } from "react-router-dom";
+import { buildProductDetailPath } from "../constants/route.constants";
+
+const FALLBACK_IMAGE_DATA_URI =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(`
+<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'>
+  <rect width='100%' height='100%' fill='#e5e7eb'/>
+  <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='24' fill='#6b7280'>Image unavailable</text>
+</svg>`);
 
 interface ProductCardProps {
   product: Product;
@@ -11,14 +22,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
   return (
     <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
       <div className="relative overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
+        <Link to={buildProductDetailPath(product.id)}>
+          <img
+            src={product.image || FALLBACK_IMAGE_DATA_URI}
+            alt={product.name}
+            className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== FALLBACK_IMAGE_DATA_URI) {
+                target.onerror = null;
+                target.src = FALLBACK_IMAGE_DATA_URI;
+              }
+            }}
+          />
+        </Link>
         {!product.inStock && (
           <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Out of Stock
+            {MESSAGES.OUT_OF_STOCK}
           </div>
         )}
         <div className="absolute top-4 left-4">
@@ -29,9 +49,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-          {product.name}
-        </h3>
+        <Link to={buildProductDetailPath(product.id)}>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-[#1976D2] transition-colors">
+            {product.name}
+          </h3>
+        </Link>
         <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
           {product.description}
         </p>
@@ -53,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
           <span className="text-gray-600 text-sm">({product.rating})</span>
         </div>
         <div className="flex items-center justify-between mb-4">
-          <div className="text-2xl font-bold text-blue-600">${product.price.toFixed(2)}</div>
+          <div className="text-2xl font-bold text-[#E53935]">${product.price.toFixed(2)}</div>
           <div className="text-sm text-gray-500">
             {product.inStock ? (
               <span className="text-green-600 flex items-center">
@@ -64,17 +86,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
                     clipRule="evenodd"
                   />
                 </svg>
-                In Stock
+                {MESSAGES.IN_STOCK}
               </span>
             ) : (
-              <span className="text-red-600">Out of Stock</span>
+              <span className="text-red-600">{MESSAGES.OUT_OF_STOCK}</span>
             )}
           </div>
         </div>
         <button
           className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-all duration-300 ${
             product.inStock && !loading
-              ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:-translate-y-1 hover:shadow-lg"
+              ? "bg-[#E53935] hover:bg-[#d32f2f] hover:-translate-y-1 hover:shadow-lg"
               : "bg-gray-400 cursor-not-allowed"
           }`}
           onClick={() => onAddToCart(product)}
@@ -102,7 +124,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              Adding...
+              {MESSAGES.ADDING_TO_CART}
             </div>
           ) : product.inStock ? (
             <div className="flex items-center justify-center">
@@ -114,10 +136,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, loading
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
                 />
               </svg>
-              Add to Cart
+              {MESSAGES.ADD_TO_CART}
             </div>
           ) : (
-            "Out of Stock"
+            MESSAGES.OUT_OF_STOCK
           )}
         </button>
       </div>
