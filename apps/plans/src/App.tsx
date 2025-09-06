@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./index.css";
 import { Routes, Route } from "react-router-dom";
 
 // Types
@@ -25,8 +26,7 @@ const PlanCard: React.FC<{
   onSelectPlan: (plan: Plan, interval: "monthly" | "yearly") => void;
   interval: "monthly" | "yearly";
 }> = ({ plan, selectedPlan, onSelectPlan, interval }) => {
-  const isSelected =
-    selectedPlan?.plan.id === plan.id && selectedPlan?.interval === interval;
+  const isSelected = selectedPlan?.plan.id === plan.id && selectedPlan?.interval === interval;
   const isPopular = plan.popular;
 
   const getPrice = () => {
@@ -47,7 +47,8 @@ const PlanCard: React.FC<{
         isSelected
           ? "border-blue-500 bg-blue-50 shadow-lg"
           : "border-gray-200 bg-white hover:border-gray-300"
-      } ${isPopular ? "ring-2 ring-blue-500 ring-opacity-50" : ""}`}>
+      } ${isPopular ? "ring-2 ring-blue-500 ring-opacity-50" : ""}`}
+    >
       {isPopular && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
           Most Popular
@@ -57,12 +58,8 @@ const PlanCard: React.FC<{
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
         <div className="mb-2">
-          <span className="text-4xl font-bold text-blue-600">
-            ${getDisplayPrice().toFixed(2)}
-          </span>
-          <span className="text-gray-600">
-            /{interval === "monthly" ? "month" : "month"}
-          </span>
+          <span className="text-4xl font-bold text-blue-600">${getDisplayPrice().toFixed(2)}</span>
+          <span className="text-gray-600">/{interval === "monthly" ? "month" : "month"}</span>
         </div>
         {interval === "yearly" && plan.discount && (
           <div className="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
@@ -84,11 +81,10 @@ const PlanCard: React.FC<{
 
       <button
         className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-300 ${
-          isSelected
-            ? "bg-blue-500 text-white"
-            : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+          isSelected ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-800 hover:bg-gray-200"
         }`}
-        onClick={() => onSelectPlan(plan, interval)}>
+        onClick={() => onSelectPlan(plan, interval)}
+      >
         {isSelected ? "Selected" : "Select Plan"}
       </button>
     </div>
@@ -101,7 +97,7 @@ const PlansList: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<SelectedPlan | null>(null);
   const [interval, setInterval] = useState<"monthly" | "yearly">("monthly");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error] = useState("");
 
   useEffect(() => {
     fetchPlans();
@@ -128,17 +124,11 @@ const PlansList: React.FC = () => {
     }
   };
 
-  const handleSelectPlan = (
-    plan: Plan,
-    selectedInterval: "monthly" | "yearly"
-  ) => {
+  const handleSelectPlan = (plan: Plan, selectedInterval: "monthly" | "yearly") => {
     setSelectedPlan({ plan, interval: selectedInterval });
 
     // Save selected plan to localStorage
-    localStorage.setItem(
-      "selectedPlan",
-      JSON.stringify({ plan, interval: selectedInterval })
-    );
+    localStorage.setItem("selectedPlan", JSON.stringify({ plan, interval: selectedInterval }));
 
     // Mock API call to save selection
     fetch("/api/selected-plan", {
@@ -173,7 +163,8 @@ const PlansList: React.FC = () => {
         <p className="text-red-600">Error loading plans: {error}</p>
         <button
           onClick={fetchPlans}
-          className="px-6 py-3 bg-blue-500 text-white border-none rounded-lg cursor-pointer hover:bg-blue-600 transition-colors">
+          className="px-6 py-3 bg-blue-500 text-white border-none rounded-lg cursor-pointer hover:bg-blue-600 transition-colors"
+        >
           Try Again
         </button>
       </div>
@@ -183,27 +174,22 @@ const PlansList: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto p-5">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Choose Your Plan
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Select the perfect plan for your needs
-        </p>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Choose Your Plan</h1>
+        <p className="text-xl text-gray-600 mb-8">Select the perfect plan for your needs</p>
 
         <div className="flex items-center justify-center gap-4">
           <span
             className={`text-sm font-medium ${
               interval === "monthly" ? "text-blue-600" : "text-gray-500"
-            }`}>
+            }`}
+          >
             Monthly
           </span>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
               checked={interval === "yearly"}
-              onChange={(e) =>
-                setInterval(e.target.checked ? "yearly" : "monthly")
-              }
+              onChange={(e) => setInterval(e.target.checked ? "yearly" : "monthly")}
               className="sr-only peer"
             />
             <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
@@ -211,7 +197,8 @@ const PlansList: React.FC = () => {
           <span
             className={`text-sm font-medium ${
               interval === "yearly" ? "text-blue-600" : "text-gray-500"
-            }`}>
+            }`}
+          >
             Yearly
           </span>
         </div>
@@ -244,7 +231,8 @@ const PlansList: React.FC = () => {
           </p>
           <button
             className="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-            onClick={handleProceedToCheckout}>
+            onClick={handleProceedToCheckout}
+          >
             Proceed to Checkout
           </button>
         </div>
@@ -261,12 +249,7 @@ const mockPlans: Plan[] = [
     description: "Perfect for individuals getting started",
     price: 9.99,
     interval: "monthly",
-    features: [
-      "Up to 5 products",
-      "Basic analytics",
-      "Email support",
-      "Standard templates",
-    ],
+    features: ["Up to 5 products", "Basic analytics", "Email support", "Standard templates"],
   },
   {
     id: 2,

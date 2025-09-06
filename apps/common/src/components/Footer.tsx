@@ -8,10 +8,7 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h4>About Us</h4>
-            <p>
-              Your trusted e-commerce platform for quality products and
-              exceptional service.
-            </p>
+            <p>Your trusted e-commerce platform for quality products and exceptional service.</p>
           </div>
 
           <div className="footer-section">
@@ -53,16 +50,36 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <h4>Connect</h4>
             <div className="social-links">
-              <a href="#" aria-label="Facebook">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
                 📘
               </a>
-              <a href="#" aria-label="Twitter">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
                 🐦
               </a>
-              <a href="#" aria-label="Instagram">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 📷
               </a>
-              <a href="#" aria-label="LinkedIn">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
                 💼
               </a>
             </div>

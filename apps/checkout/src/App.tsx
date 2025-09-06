@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./index.css";
 import { Routes, Route } from "react-router-dom";
 
 // Types
@@ -68,19 +69,16 @@ const CartItemComponent: React.FC<{
         />
       </div>
       <div className="flex-1 mr-4">
-        <h4 className="font-semibold text-gray-800 mb-1">
-          {item.product.name}
-        </h4>
+        <h4 className="font-semibold text-gray-800 mb-1">{item.product.name}</h4>
         <p className="text-sm text-gray-600 mb-2">{item.product.description}</p>
-        <div className="text-lg font-bold text-blue-600">
-          ${item.product.price.toFixed(2)}
-        </div>
+        <div className="text-lg font-bold text-blue-600">${item.product.price.toFixed(2)}</div>
       </div>
       <div className="flex items-center mr-4">
         <button
           className="w-8 h-8 bg-gray-200 text-gray-700 rounded-l flex items-center justify-center hover:bg-gray-300 disabled:opacity-50"
           onClick={() => onUpdateQuantity(item.product.id, item.quantity - 1)}
-          disabled={item.quantity <= 1}>
+          disabled={item.quantity <= 1}
+        >
           -
         </button>
         <span className="w-12 h-8 bg-gray-100 flex items-center justify-center text-center">
@@ -88,7 +86,8 @@ const CartItemComponent: React.FC<{
         </span>
         <button
           className="w-8 h-8 bg-gray-200 text-gray-700 rounded-r flex items-center justify-center hover:bg-gray-300"
-          onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1)}>
+          onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1)}
+        >
           +
         </button>
       </div>
@@ -97,7 +96,8 @@ const CartItemComponent: React.FC<{
       </div>
       <button
         className="text-red-500 hover:text-red-700 text-xl font-bold"
-        onClick={() => onRemoveItem(item.product.id)}>
+        onClick={() => onRemoveItem(item.product.id)}
+      >
         ✕
       </button>
     </div>
@@ -114,14 +114,10 @@ const CheckoutForm: React.FC<{
   return (
     <div className="space-y-8">
       <div className="bg-white p-6 rounded-lg border border-gray-200">
-        <h3 className="text-xl font-semibold text-gray-800 mb-6">
-          Shipping Information
-        </h3>
+        <h3 className="text-xl font-semibold text-gray-800 mb-6">Shipping Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              First Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
             <input
               type="text"
               value={shippingInfo.firstName}
@@ -131,9 +127,7 @@ const CheckoutForm: React.FC<{
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Last Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
             <input
               type="text"
               value={shippingInfo.lastName}
@@ -144,9 +138,7 @@ const CheckoutForm: React.FC<{
           </div>
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
             type="email"
             value={shippingInfo.email}
@@ -156,9 +148,7 @@ const CheckoutForm: React.FC<{
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Address
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
           <input
             type="text"
             value={shippingInfo.address}
@@ -169,9 +159,7 @@ const CheckoutForm: React.FC<{
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              City
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
             <input
               type="text"
               value={shippingInfo.city}
@@ -181,9 +169,7 @@ const CheckoutForm: React.FC<{
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              State
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
             <input
               type="text"
               value={shippingInfo.state}
@@ -195,9 +181,7 @@ const CheckoutForm: React.FC<{
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              ZIP Code
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">ZIP Code</label>
             <input
               type="text"
               value={shippingInfo.zipCode}
@@ -207,9 +191,7 @@ const CheckoutForm: React.FC<{
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Country
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
             <input
               type="text"
               value={shippingInfo.country}
@@ -222,13 +204,9 @@ const CheckoutForm: React.FC<{
       </div>
 
       <div className="bg-white p-6 rounded-lg border border-gray-200">
-        <h3 className="text-xl font-semibold text-gray-800 mb-6">
-          Payment Information
-        </h3>
+        <h3 className="text-xl font-semibold text-gray-800 mb-6">Payment Information</h3>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Card Number
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
           <input
             type="text"
             value={paymentInfo.cardNumber}
@@ -240,9 +218,7 @@ const CheckoutForm: React.FC<{
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Card Holder Name
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Card Holder Name</label>
           <input
             type="text"
             value={paymentInfo.cardHolder}
@@ -253,9 +229,7 @@ const CheckoutForm: React.FC<{
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Expiry Date
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
             <input
               type="text"
               value={paymentInfo.expiryDate}
@@ -267,9 +241,7 @@ const CheckoutForm: React.FC<{
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              CVV
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
             <input
               type="text"
               value={paymentInfo.cvv}
@@ -330,25 +302,20 @@ const Checkout: React.FC = () => {
     }
 
     const updatedCart = cartItems.map((item) =>
-      item.product.id === productId ? { ...item, quantity: newQuantity } : item
+      item.product.id === productId ? { ...item, quantity: newQuantity } : item,
     );
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const removeItem = (productId: number) => {
-    const updatedCart = cartItems.filter(
-      (item) => item.product.id !== productId
-    );
+    const updatedCart = cartItems.filter((item) => item.product.id !== productId);
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const getSubtotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
+    return cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   };
 
   const getPlanTotal = () => {
@@ -416,16 +383,14 @@ const Checkout: React.FC = () => {
           <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
             ✓
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Order Placed Successfully!
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Placed Successfully!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for your purchase. You will receive a confirmation email
-            shortly.
+            Thank you for your purchase. You will receive a confirmation email shortly.
           </p>
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-            onClick={() => (window.location.href = "/landing")}>
+            onClick={() => (window.location.href = "/landing")}
+          >
             Continue Shopping
           </button>
         </div>
@@ -437,15 +402,12 @@ const Checkout: React.FC = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
         <div className="text-center p-8 bg-white rounded-lg shadow-lg max-w-md">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Your cart is empty
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Add some products to your cart to continue shopping.
-          </p>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
+          <p className="text-gray-600 mb-6">Add some products to your cart to continue shopping.</p>
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-            onClick={() => (window.location.href = "/landing")}>
+            onClick={() => (window.location.href = "/landing")}
+          >
             Continue Shopping
           </button>
         </div>
@@ -461,9 +423,7 @@ const Checkout: React.FC = () => {
 
           {cartItems.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                Shopping Cart
-              </h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Shopping Cart</h2>
               <div className="space-y-4">
                 {cartItems.map((item) => (
                   <CartItemComponent
@@ -479,16 +439,12 @@ const Checkout: React.FC = () => {
 
           {selectedPlan && (
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                Selected Plan
-              </h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Selected Plan</h2>
               <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {selectedPlan.plan.name}
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  {selectedPlan.plan.description}
-                </p>
+                <p className="text-gray-600 mb-4">{selectedPlan.plan.description}</p>
                 <div className="text-2xl font-bold text-blue-600">
                   ${getPlanTotal().toFixed(2)}/{selectedPlan.interval}
                 </div>
@@ -506,29 +462,19 @@ const Checkout: React.FC = () => {
 
         <div className="lg:col-span-1">
           <div className="bg-white p-6 rounded-lg border border-gray-200 sticky top-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">
-              Order Summary
-            </h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">Order Summary</h3>
 
             {cartItems.length > 0 && (
               <div className="flex justify-between mb-4">
-                <span className="text-gray-600">
-                  Subtotal ({cartItems.length} items)
-                </span>
-                <span className="font-semibold">
-                  ${getSubtotal().toFixed(2)}
-                </span>
+                <span className="text-gray-600">Subtotal ({cartItems.length} items)</span>
+                <span className="font-semibold">${getSubtotal().toFixed(2)}</span>
               </div>
             )}
 
             {selectedPlan && (
               <div className="flex justify-between mb-4">
-                <span className="text-gray-600">
-                  Plan: {selectedPlan.plan.name}
-                </span>
-                <span className="font-semibold">
-                  ${getPlanTotal().toFixed(2)}
-                </span>
+                <span className="text-gray-600">Plan: {selectedPlan.plan.name}</span>
+                <span className="font-semibold">${getPlanTotal().toFixed(2)}</span>
               </div>
             )}
 
@@ -542,7 +488,8 @@ const Checkout: React.FC = () => {
             <button
               className="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
               onClick={handlePlaceOrder}
-              disabled={loading || cartItems.length === 0}>
+              disabled={loading || cartItems.length === 0}
+            >
               {loading ? "Processing..." : "Place Order"}
             </button>
           </div>
