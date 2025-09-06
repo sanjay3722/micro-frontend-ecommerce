@@ -7,6 +7,9 @@ module.exports = {
         new ModuleFederationPlugin({
           name: "landing",
           filename: "remoteEntry.js",
+          remotes: {
+            common: "common@http://localhost:3002/remoteEntry.js",
+          },
           exposes: {
             "./LandingApp": "./src/App",
           },
@@ -19,6 +22,7 @@ module.exports = {
       );
 
       webpackConfig.output.publicPath = "auto";
+      webpackConfig.output.crossOriginLoading = "anonymous";
 
       return webpackConfig;
     },
@@ -26,5 +30,8 @@ module.exports = {
   devServer: {
     port: 3003,
     historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
 };

@@ -25,6 +25,7 @@ module.exports = {
       );
 
       webpackConfig.output.publicPath = "auto";
+      webpackConfig.output.crossOriginLoading = "anonymous";
 
       return webpackConfig;
     },
@@ -32,5 +33,8 @@ module.exports = {
   devServer: {
     port: 3002,
     historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
 };

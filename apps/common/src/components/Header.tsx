@@ -7,10 +7,7 @@ interface HeaderProps {
   showNav?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  title = "E-commerce Store",
-  showNav = true,
-}) => {
+const Header: React.FC<HeaderProps> = ({ title = "E-commerce Store", showNav = true }) => {
   const user = JSON.parse(localStorage.getItem("user") || "null");
 
   const handleLogout = () => {

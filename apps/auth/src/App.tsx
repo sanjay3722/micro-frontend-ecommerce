@@ -42,7 +42,7 @@ try {
   };
 }
 
-// Header Component
+// Header Component (standalone only; host provides common header)
 const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-sm border-b border-gray-100">
@@ -693,9 +693,10 @@ const Signup = () => {
 
 // Main Auth App Component
 const AuthApp = () => {
+  const isFederated = typeof window !== "undefined" && window.location.pathname.startsWith("/auth");
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      {!isFederated && <Header />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
